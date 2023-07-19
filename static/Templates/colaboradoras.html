@@ -1,0 +1,23 @@
+{% load static %}
+<html lang="es">
+<head>
+    <link href='{% static "Stylesheet/colaboradoras.css" %}' rel="stylesheet">
+</head>
+<body>
+    <div class="section-main">
+        <div class="contenedor_mayor">
+            <div class="titulo">
+                <h2>Nuestras colaboradoras</h2>
+            </div>
+            <div class="contenedor_colaboradoras">
+               {% for colaboradora in colaboradoras %}
+               <div class="contenedor_colaboradora">
+                    <img src="{{colaboradora.fotografia.url}}">
+                    <h5>{{colaboradora.identidad.usuario.first_name}}</h5>
+               </div>
+               {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

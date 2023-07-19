@@ -1,0 +1,138 @@
+.section-main .contenedor_mayor{
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top:10%;
+    padding: 10px;
+    width: 80%;
+}
+
+.section-main .contenedor_mayor .contenedor_a,
+.section-main .contenedor_mayor .contenedor_b{
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin:5px;
+    padding:5px;
+}
+
+.section-main .contenedor_mayor .contenedor_a,
+.section-main .contenedor_mayor .contenedor_b{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+h2{
+    color: #048C26;
+    Font-family: Bodoni MT, Bodoni 72, Didot, Didot LT STD, Hoefler Text, Garamond, Times New Roman, serif;
+    margin-bottom: 5%;
+}
+
+.section-main .contenedor_mayor .contenedor_a img{
+    border-radius: 20px;
+    height: 450px;
+}
+
+#formCtzBrigada input[type=email],
+#formCtzBrigada input[type=number],
+#formCtzBrigada input[type=password],
+#formCtzBrigada input[type=text],
+#formCtzBrigada select
+{
+    margin:5px;
+    height:25px;
+}
+
+#formCtzBrigada #txtCorreoCtzBrigada,
+#formCtzBrigada #txtDireccionCtzBrigada
+{
+    width: 380px;
+}
+
+#formCtzBrigada #slcMunicipioCtzBrigada{
+    width: 180px;
+}
+
+#formCtzBrigada button{
+    border-radius: 10px;
+    border-style: solid;
+    border-width: thin;
+}
+
+#formCtzBrigada #btnCotizarDtsCtzBrigada{
+    background-color: #048C26;
+    border-color: #048C26;
+}
+
+#btnCotizarDtsCtzBrigada {
+    color:whitesmoke;
+}
+
+.esp_activo{
+    background-color: #048C26;
+    border-color: #048C26;
+    color: whitesmoke;
+}
+
+.esp_inactivo{
+    border-color: #048C26;
+    color: #048C26;
+}
+
+#txtEspacioCtzBrigada{
+    display:none;
+}
+
+.lbl_num_CtzBrigada{
+    display:block;
+}
+
+.grupo_CtzBrigada{
+    display: flex; 
+    justify-content: center;
+}
+
+#chkTerminosCtzBrigada,
+#chkTratamientoDatosCtzBrigada{
+    margin:5px;
+}
+
+@media only screen and (max-width: 1270px){
+    .contenedor_a{
+        display:none;
+    }
+}
+
+@media only screen and (max-width: 846px){
+    .contenedor_a{
+        display:none;
+    }
+
+    .section-main .contenedor_mayor{
+        margin-top: 0;
+        width: auto;
+    }
+
+    #formCtzBrigada #txtCorreoCtzBrigada,
+    #formCtzBrigada #txtDireccionCtzBrigada
+    {
+        width: 190px;
+    }
+
+    .section-main .contenedor_mayor .contenedor_b #formCtzBrigada{
+        display: block;
+        width: 100%;
+    }
+
+    .grupo_CtzBrigada{
+        display: block;
+    }
+
+    #botonesTipoEspacio{
+        display:flex;
+    }
+}

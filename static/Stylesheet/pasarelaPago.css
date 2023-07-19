@@ -1,0 +1,80 @@
+.section-main .contenedor_mayor{
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.9); 
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 120px;
+    padding: 10px;
+    width: 80%;
+    height: 10%;
+}
+
+.section-main .contenedor_mayor .contenedor_a{
+    width: 50%;
+}
+
+.section-main .contenedor_mayor .contenedor_b{
+    width: 50%;
+}
+
+.section-main .contenedor_mayor .contenedor_a img{
+    width: 90%;
+    border-radius: 2%;
+}
+
+.section-main .contenedor_mayor .contenedor_b img{
+    margin-left:40%;
+    width: 20%;
+    border-radius: 2%;
+}
+
+h2{
+    color: #048C26;
+    Font-family: Bodoni MT, Bodoni 72, Didot, Didot LT STD, Hoefler Text, Garamond, Times New Roman, serif;
+    text-align: center;
+    margin-bottom: 4%;
+    margin-top: 2%;
+}
+
+#divTotalPasarelaPago{
+    display: flex;
+    align-items: center;
+    margin-left:60%;
+}
+
+#pCertificadoPCI{
+    margin-right: 5%;
+    margin-bottom: 5%;
+    text-align: justify;
+}
+
+#pCheck{
+    margin: 2%;
+}
+
+#sbmtPagarDiv{
+    width: 100%;
+    display: flex;
+    justify-items: center;
+    text-align: center;
+}
+
+#sbmtPagarDiv form button{
+    background-color: #048C26;
+    border-color: #048C26;
+    color:#F0F0F0;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: thin;
+}
+
+#paypal-value{
+    display: flex;
+}
+
+#ppTitulo{
+    color:#003087;
+    font-size: 1em;
+    font-weight: bold;
+}

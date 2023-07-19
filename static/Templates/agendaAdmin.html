@@ -1,0 +1,179 @@
+{% load static %}
+<html lang="es">
+<head>
+    <link href='{% static "Stylesheet/agendaAdmin.css" %}' rel="stylesheet">
+</head>
+<body>
+    <div class="section-main">
+        <div class="contenedor_mayor">
+            <div class="contenedor_calendario">
+                
+                <div class="calendario" id="calendarioMesActual">
+                    <p id="pNumeroDiasMes" class="p_numero_dias_mes">{{numero_dias_mes}}</p>
+                    <p id="pDiaComienzoMes" class="p_dia_comienzo_mes">{{dia_comienzo_mes}}</p>
+                    <p id="pDiaActual">{{dia_actual}}</p>
+                    <p id="pMes" class="p_mes">{{mes}}</p>
+                    <p id="pAnio" class="p_anio">{{anio}}</p>
+                    <h4><button class="btn_anterior_mes" disabled><</button> {{mes}} de {{anio}} <button class="btn_siguiente_mes" onclick="MostrarCalendario('0')">></button></h4>
+                    <br>
+                    <ol>
+                        <li class="nombre_dia">Lun</li>
+                        <li class="nombre_dia">Mar</li>
+                        <li class="nombre_dia">Mie</li>
+                        <li class="nombre_dia">Jue</li>
+                        <li class="nombre_dia">Vie</li>
+                        <li class="nombre_dia">Sab</li>
+                        <li class="nombre_dia">Dom</li>
+                        <li class="primer_dia disponible">1</li>
+                        <li class="disponible">2</li>
+                        <li class="disponible">3</li>
+                        <li class="disponible">4</li>
+                        <li class="disponible">5</li>
+                        <li class="disponible">6</li>
+                        <li class="disponible">7</li>
+                        <li class="disponible">8</li>
+                        <li class="disponible">9</li>
+                        <li class="disponible" data-numdia="10">10</li>
+                        <li class="disponible">11</li>
+                        <li class="disponible">12</li>
+                        <li class="disponible">13</li>
+                        <li class="disponible">14</li>
+                        <li class="disponible">15</li>
+                        <li class="disponible">16</li>
+                        <li class="disponible">17</li>
+                        <li class="disponible">18</li>
+                        <li class="disponible">19</li>
+                        <li class="disponible">20</li>
+                        <li class="disponible">21</li>
+                        <li class="disponible">22</li>
+                        <li class="disponible">23</li>
+                        <li class="disponible">24</li>
+                        <li class="disponible">25</li>
+                        <li class="disponible">26</li>
+                        <li class="disponible">27</li>
+                        <li class="disponible">28</li>
+                        <li class="disponible">29</li>
+                        <li class="disponible">30</li>
+                        <li class="disponible">31</li>
+                    </ol>
+                </div>
+                <div class="calendario" id="calendarioMesSiguiente">
+                    <p id="pNumeroDiasMesSiguiente" class="p_numero_dias_mes">{{numero_dias_mes_siguiente}}</p>
+                    <p id="pDiaComienzoMesSiguiente" class="p_dia_comienzo_mes">{{dia_comienzo_mes_siguiente}}</p>
+                    <p id="pMesSiguiente" class="p_mes">{{mes_siguiente}}</p>
+                    <p id="pAnioSiguiente" class="p_anio">{{anio_siguiente}}</p>
+                    <h4><button class="btn_anterior_mes" onclick="MostrarCalendario('1')"><</button> {{mes_siguiente}} de {{anio_siguiente}} <button class="btn_siguiente_mes" disabled>></button></h4>
+                    <br>
+                    <ol>
+                        <li class="nombre_dia">Lun</li>
+                        <li class="nombre_dia">Mar</li>
+                        <li class="nombre_dia">Mie</li>
+                        <li class="nombre_dia">Jue</li>
+                        <li class="nombre_dia">Vie</li>
+                        <li class="nombre_dia">Sab</li>
+                        <li class="nombre_dia">Dom</li>
+                        <li class="primer_dia_siguiente">1</li>
+                        <li class="disponible">2</li>
+                        <li class="disponible">3</li>
+                        <li class="disponible">4</li>
+                        <li class="disponible">5</li>
+                        <li class="disponible">6</li>
+                        <li class="disponible">7</li>
+                        <li class="disponible">8</li>
+                        <li class="disponible">9</li>
+                        <li class="disponible">10</li>
+                        <li class="disponible">11</li>
+                        <li class="disponible">12</li>
+                        <li class="disponible">13</li>
+                        <li class="disponible">14</li>
+                        <li class="disponible">15</li>
+                        <li class="disponible">16</li>
+                        <li class="disponible">17</li>
+                        <li class="disponible">18</li>
+                        <li class="disponible">19</li>
+                        <li class="disponible">20</li>
+                        <li class="disponible">21</li>
+                        <li class="disponible">22</li>
+                        <li class="disponible">23</li>
+                        <li class="disponible">24</li>
+                        <li class="disponible">25</li>
+                        <li class="disponible">26</li>
+                        <li class="disponible">27</li>
+                        <li class="disponible">28</li>
+                        <li class="disponible">29</li>
+                        <li class="disponible">30</li>
+                        <li class="disponible">31</li>
+                    </ol>
+                </div>
+                <form id="formBusqFecha" action="/adminagenda/" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %} 
+                    <input type="date" id="txtBusqFecha" name="nmBusqFecha">
+                    <p id="pFechaSeleccionada">{{fecha_seleccionada}}</p>
+                </form>
+            </div>
+            <div class="contenedor_tablero">
+                <div id="btnesControlAgendaAdm">
+                    <button id="btnAsignarAgendaAdm" onclick="SeleccionarTablero('1')">Asignar Profesional</button>
+                    <button id="btnVerAgendaAdm" class="btn_activo_agenda_adm" onclick="SeleccionarTablero('0')">Ver agenda</button>
+                </div>
+                <div id="contenedorAgendas">
+                    {% if agenda %}
+                        <table id="tablaAgendaAdmin">
+                            <thead>
+                                <tr>
+                                    <th>Prest. Servicio</th>
+                                    <th>Servicio</th>
+                                    <th>Jornada</th>
+                                    <th>Colaborador</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for registro in agenda %}
+                                    <tr>
+                                        <td>{{registro.prestacion_servicio.id}}</td>
+                                        <td>{{registro.prestacion_servicio.servicio.nombre}}</td>
+                                        <td>{{registro.prestacion_servicio.get_jornada_display}}</td>
+                                        <td>{{registro.colaborador.identidad.usuario.get_full_name}}</td>
+                                        <td>{{registro.prestacion_servicio.get_estado_display}}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p>No hay servicios agendados para la fecha seleccionada</p>
+                    {% endif %}
+                </div>
+                <div id="contenedorAsignacion" class="contenedor_inactivo">
+                    <form id="formAgendarPrestServicio" action="/adminagenda/asignar/" enctype="multipart/form-data" method="POST">
+                        {% csrf_token %}
+                        <input type="date" id="txtFechaAsignacion" name="nmFechaAsignacion" required>
+                        <select id="selectorPrestacionServicioAsignacion" name="nmSlcPrestacionServicioAsignacion" required>
+                            <option disabled selected value="0">Seleccione una prestación de servicio</option>
+                            {% for prestacion_servicio in prestaciones_servicio %}
+                            <option value="{{prestacion_servicio.id}}">{{prestacion_servicio.id}} - 
+                                pedido[{{prestacion_servicio.pedido.id}}] - {{prestacion_servicio.servicio.nombre}} 
+                                - {{prestacion_servicio.cliente_receptor.identidad.usuario.get_full_name}} - 
+                                {{prestacion_servicio.get_jornada_display}}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        <select id="selectorColaboradoraAsignacion" name="nmSlcColaboradoraAsignacion" required>
+                            <option disabled selected value="0">Seleccione una profesional</option>
+                            {% for colaboradora in colaboradoras %}
+                            <option value="{{colaboradora.id}}">{{colaboradora.id}} - {{colaboradora.identidad.usuario.get_full_name}}</option>
+                            {% endfor %}
+                        </select>
+                        <br>
+                        <button type="button" id="btnAsignarProfesAgendaAdm" onclick="asignarProfesional()">Asignar</button>
+                    </form>
+                </div>   
+            </div>
+        </div>
+    </div>
+    <div id="configuracionPagina">
+        <p id="pAccion">{{accion}}</p>
+        <p id="pMensajeError">{{mensaje_error}}</p>
+    </div>
+</body>
+</html>

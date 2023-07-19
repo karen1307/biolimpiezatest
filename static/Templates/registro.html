@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href='{% static "Stylesheet/registro.css" %}' rel="stylesheet">
+</head>
+<body>
+    <div class="section-main">
+        <div class="contenedor_mayor">
+            <div class="contenedor_a">
+                <img src='{% static "Images/Fondos/tecleo.jpg" %}'>
+            </div>
+            <div class="contenedor_b">
+                <h2>Registro</h2>
+                <p class="salida">Para registrarte, por favor ingresa tus datos</p>
+                <form id="formRegistro" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p class="entrada">
+                        <input type="text" id="txtNombreReg" name="nmNombresReg" placeholder="Nombres" required>
+                        <input type="text" id="txtApellidoReg" name="nmApellidosReg" placeholder="Apellidos" required>
+                    </p>
+                    <p class="entrada">
+                        <input type="email" id="txtCorreoReg" name="nmCorreoReg" placeholder="Correo electrónico" required>
+                    </p>
+                    <p class="entrada">
+                        <input type="text" id="txtTelefonoReg" name="nmTelefonoReg" placeholder="Teléfono" required>
+                        <select id="slcMunicipioReg" name="nmMunicipioReg" required>
+                            <option selected disabled value="">Municipio</option>
+                            <optgroup label="Zona centro">
+                                <option value="1">Medellín</option>
+                            </optgroup>
+                            <optgroup label="Zona norte">
+                                <option value="2">Bello</option>
+                                <option value="3">Copacabana</option>
+                                <option value="4">Girardota</option>
+                            </optgroup>
+                            <optgroup label="Zona sur">
+                                <option value="5">Itagüí</option>
+                                <option value="6">Envigado</option>
+                                <option value="10">Sabaneta</option>
+                                <option value="7">La Estrella</option>
+                                <option value="8">Caldas</option>
+                            </optgroup>
+                        </select>
+                    </p>
+                    <p class="entrada">
+                        <input type="text" id="txtDireccionReg" name="nmDireccionReg" placeholder="Dirección" required>
+                    </p>
+                    <p class="entrada">
+                        <input type="text" id="txtComplementoDireccionReg" name="nmDetallesDireccion" placeholder="Edificio, Apartamento">
+                        <input type="text" id="txtBarrioReg" name="nmBarrioReg" placeholder="Barrio" required>
+                    </p>
+                    <p class="entrada">
+                        <input type="password" id="txtPaseReg" name="nmPaseReg" placeholder="Contraseña" required>
+                        <input type="password" id="txtPaseConfReg" name="nmPaseConfReg" placeholder="Confirme contraseña" required>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="chkTerminosReg"> Acepto tanto los <a href="/terminosycondiciones/" target="_blank">términos y condiciones</a><br>
+                        como la <a href="/politicadetratamientodedatos/" target="_blank">política de tratamiento de datos</a>
+                    </p>
+                    <p>
+                        <button type="button" id="btnRegistrarmeReg" onclick="EnviarFormularioRegistro()">Registrarme</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="configuracionPagina">
+        <p id="pAccion">{{accion}}</p>
+        <p id="pMensajeError">{{mensaje_error}}</p>
+    </div>
+</body>
+</html>
+
+    
+        

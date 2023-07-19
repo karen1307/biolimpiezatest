@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href='{% static "Stylesheet/restablecimientoPase.css" %}' rel="stylesheet">
+</head>
+<body>
+    <div class="section-main">
+        <div class="contenedor_mayor">
+            <div class="contenedor_a">
+                <img src='{% static "Images/Fondos/tecleo.jpg" %}'>
+            </div>
+            <div class="contenedor_b">
+                <h2>Recuperación de acceso</h2>
+                <p class="salida">Proporciona una nueva contraseña</p>
+                <form id="formRestablecimientoPase" action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p class="entrada"><input type="password" id="txtPaseRestablec" name="nmPaseRestablec" placeholder="Contraseña" required></p>
+                    <p class="entrada"><input type="password" id="txtConfirmPaseRestablec" name="nmConfirmPaseRestablec" placeholder="Confirme contraseña" required></p>
+                    <p><button type="button" onclick="EnviarFormularioRestablecimientoPase()">Cambiar contraseña</button></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="configuracionPagina">
+        <p id="pAccion">{{accion}}</p>
+        <p id="pMensajeError">{{mensaje_error}}</p>
+    </div>
+</body>

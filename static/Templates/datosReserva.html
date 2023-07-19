@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href='{% static "Stylesheet/datosReserva.css" %}' rel="stylesheet">
+</head>
+<body>
+    <div class="section-main">
+        <div class="contenedor_mayor">
+            <div class="contenedor_a">
+                <img src='{% static "Images/Fondos/agendar.jpg" %}'>
+            </div>
+            <div class="contenedor_b">
+                <form id="formDatosReserva" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h2>Datos de reserva</h2>
+                    <h4>Datos de persona que recibe servicio</h4>
+                        Servicio para:
+                        <select id="slcPersonaDtsReserva" name="nmPersonaDtsReserva" required onclick="SeleccionarTipoRelleno()">
+                            <option value="0">Mí, usar mis datos</option>
+                            <option value="1">Mí, usar otra dirección</option>
+                            <option value="2">Otra persona</option>
+                        </select>
+                    <p>
+                        <input type="text" id="txtNombreDtsReserva" name="nmNombresDtsReserva" placeholder="Nombres" required>
+                        <input type="text" id="txtApellidoDtsReserva" name="nmApellidosDtsReserva" placeholder="Apellidos" required>
+                    </p>
+                    <p>
+                        <input type="email" id="txtCorreoDtsReserva" name="nmCorreoDtsReserva" placeholder="Correo electrónico" required>
+                    </p>
+                    <p>
+                        <input type="text" id="txtTelefonoDtsReserva" name="nmTelefonoDtsReserva" placeholder="Teléfono" required>
+                        <select id="slcMunicipioDtsReserva" name="nmMunicipioDtsReserva" required>
+                            <option value="" selected disabled>Municipio</option>
+                            <optgroup label="Zona centro">
+                                <option value="1">Medellín</option>
+                            </optgroup>
+                            <optgroup label="Zona norte">
+                                <option value="2">Bello</option>
+                                <option value="3">Copacabana</option>
+                                <option value="4">Girardota</option>
+                            </optgroup>
+                            <optgroup label="Zona sur">
+                                <option value="5">Itagüí</option>
+                                <option value="6">Envigado</option>
+                                <option value="10">Sabaneta</option>
+                                <option value="7">La Estrella</option>
+                                <option value="8">Caldas</option>
+                            </optgroup>
+                        </select>
+                    </p>
+                    <p>
+                        <input type="text" id="txtDireccionDtsReserva" name="nmDireccionDtsReserva" placeholder="Dirección" required>
+                    </p>
+                    <p>
+                        <input type="text" id="txtDetallesDireccionDtsReserva" name="nmDetallesDireccionDtsReserva" placeholder="Edificio, Apartamento">
+                        <input type="text" id="txtBarrioDtsReserva" name="nmBarrioDtsReserva" placeholder="Barrio" required>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="chkTerminosDtsReserva"> Acepto tanto los <a href="/terminosycondiciones/" target="_blank">términos y condiciones</a><br>
+                        como la <a href="/politicadetratamientodedatos/" target="_blank">política de tratamiento de datos</a>
+                    </p>
+                    <p id="pServicio">
+                       <input id="txtServicioDtsReserva" type="text" name="nmServicioDtsReserva" readonly value="{{servicio_reserva}}">
+                    </p>
+                    <p>
+                        <button type="button" id="btnSiguienteDtsReserva" onclick="EnviarFormularioDatosReserva()">Siguiente</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="configuracionPagina">
+        <p id="pAccion">{{accion}}</p>
+        <p id="pMensajeError">{{mensaje_error}}</p>
+    </div>
+</body>
+</html>

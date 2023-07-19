@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href='{% static "Stylesheet/ingreso.css" %}' rel="stylesheet">
+</head>
+<body>
+    <div class="section-main">
+        <div class="contenedor_mayor">
+            <div class="contenedor_a">
+                <img src='{% static "Images/Fondos/tecleo.jpg" %}'>
+            </div>
+            <div class="contenedor_b">
+                <h2>Inicio de sesión</h2>
+                <p class="salida">Si ya tienes cuenta, ingresa aquí</p>
+                <form id="formIngreso" action="/ingreso/" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p class="entrada"><input type="email" id="txtCorreoIng" name="nmCorreoIng" placeholder="Correo electrónico" required></p>
+                    <p class="entrada"><input type="password" id="txtPaseIng" name="nmPaseIng" placeholder="Contraseña" required></p>
+                    <input type="hidden" name="nmNextIng" value="{{request.GET.next}}">
+                    <p><a href="/recuperaciondeacceso/">¿Olvidaste tu contraseña?</a></p>
+                    <p class="salida">¿No tienes cuenta? Crea una <a href="/registro/">aquí</a></p>
+                    <p><button type="button" onclick="IniciarSesion()">Iniciar sesión</button></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="configuracionPagina">
+        <p id="pAccion">{{accion}}</p>
+        <p id="pMensajeError">{{mensaje_error}}</p>
+    </div>
+</body>
+</html>
+
+    

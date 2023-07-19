@@ -1,0 +1,230 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href='{% static "Images/Iconos/hoja.png" %}'>
+    <link href='{% static "Stylesheet/index.css" %}' rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style type="text/css">
+        .section-main{
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            background: url("{% static 'Images/Fondos/desinfeccion.avif' %}") no-repeat;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 80px;
+        }
+    </style>
+    <title>Biolimpieza {{complemento_titulo}}</title>
+</head>
+<body>
+    <header>
+        <a href="/" class="brand">
+            <img src='{% static "Images/Logo/sin_fondo.png" %}'>
+        </a>
+        <nav class="menu">
+          <div class="btn">
+            <i class="fas fa-times close-btn"></i>
+          </div>
+          <ul id="ulMenuNav">
+            <li id="liAdministrativo">
+                <a href="" class="m_texto">Administrativo</a>
+                <ul class="menu_administrativo">
+                    <li><a href="/adminagenda/">Agenda</a></li>
+                    <li><a href="/administracion/auth/user/">Gestión de accesos</a></li>
+                    <li><a href="/administracion/persona/">Gestión de entidades</a></li>
+                    <li><a href="/administracion/servicio/">Gestión de servicios</a></li>
+                    <li><a href="/administracion/contacto/registrocontacto/">Gestión de PQRSF</a></li>
+                    <li><a href="/administracion/pedido/">Gestión de pedidos</a></li>
+                    <li><a href="http://localhost/biolimpieza/tablero/">Tablero estadístico</a></li>
+                </ul>
+            </li>
+             <li id="liServicios">
+                <a href="" class="m_texto">Servicios</a>
+                <ul class="menu_servicios">
+                    <li><a href="/reserva/limpieza/hogar">Limpieza de casa</a></li>
+                    <li><a href="/reserva/limpieza/oficina">Limpieza de oficina</a></li>
+                    <li><a href="/brigada/cotizacion/">Brigada</a></li>
+                </ul>
+             </li>
+             <li id="liRegistro"><a href="/registro/" class="m_texto">Crear tu cuenta</a></li>
+             <li id="liIngreso"><a href="/ingreso/" class="m_texto">Ingresar</a></li>
+             <li id="liCuenta">
+                <a href="" class="m_texto">Mi cuenta</a>
+                <ul class="menu_administrativo">
+                    <li><a href="/gestionarmisdatos/">Gestionar mis datos</a></li>
+                    <li><a href="/gestionarmispedidos/">Gestionar mis pedidos</a></li>
+                    <li><a href="/cerrarsesion/">Cerrar sesión</a></li>
+                </ul>
+            </li>
+            <!--<li><a href="/pasareladepago/paypal/" class="m_imagen"><img src='{% static "Images/Iconos/carrito.png" %}' style="height: 50px;"></a></li>-->
+          </ul>
+        </nav>
+        <div class="btn">
+          <i class="fas fa-bars menu-btn"></i>
+        </div>
+    </header>
+    {% if pagina == "inicio" %}
+        {% include "inicio.html" %}
+    {% endif %}
+    {% if pagina == "contacto" %}
+        {% include "contacto.html" %}
+    {% endif %}
+    {% if pagina == "registro" %}
+        {% include "registro.html" %}
+    {% endif %}
+    {% if pagina == "ingreso" %}
+        {% include "ingreso.html" %}
+    {% endif %}
+    {% if pagina == "no_encontrada" %}
+        {% include "noEncontrada.html" %}
+    {% endif %}
+    {% if pagina == "colaboradoras" %}
+        {% include "colaboradoras.html" %}
+    {% endif %}
+    {% if pagina == "datosReserva" %}
+        {% include "datosReserva.html" %}
+    {% endif %}
+    {% if pagina == "agenda" %}
+        {% include "agenda.html" %}
+    {% endif %}
+    {% if pagina == "agenda_admin" %}
+        {% include "agendaAdmin.html" %}
+    {% endif %}
+    {% if pagina == "politica_tratamiento_datos" %}
+        {% include "politicaTratamientoDatos.html" %}
+    {% endif %}
+    {% if pagina == "terminos_condiciones" %}
+        {% include "terminosCondiciones.html" %}
+    {% endif %}
+    {% if pagina == "brigada" %}
+        {% include "brigada.html" %}
+    {% endif %}
+    {% if pagina == "recuperacion_acceso" %}
+        {% include "recuperacionAcceso.html" %}
+    {% endif %}
+    {% if pagina == "restablecimiento_pase" %}
+        {% include "restablecimientoPase.html" %}
+    {% endif %}
+    {% if pagina == "gestion_datos" %}
+        {% include "gestionDatos.html" %}
+    {% endif %}
+    {% if pagina == "eliminacion_cuenta" %}
+        {% include "eliminarCuenta.html" %}
+    {% endif %}
+    {% if pagina == "conocenos" %}
+        {% include "conocenos.html" %}
+    {% endif %}
+    {% if pagina == "pasarela" %}
+        {% include "pasarelaPago_mixta.html" %}
+    {% endif %}
+    {% if pagina == "gestion_pedidos" %}
+        {% include "gestionPedidos.html" %}
+    {% endif %}
+    <footer>
+        <div class="footer_logo">
+            <a href="/">
+                <img src='{% static "Images/Logo/redondo.png" %}'>
+            </a>
+        </div>
+        
+        <div class="footer_nosotros">
+            <p>NOSOTROS</p>
+            <br>
+            <p><a href="/conocenos/">Conócenos</a></p>
+            <p><a href="/colaboradoras/">Nuestras colaboradoras</a></p>
+        </div>
+
+        <div class="footer_politicas">
+            <p>NORMATIVAS</p>
+            <br>
+            <p><a href="/politicadetratamientodedatos/">Política de tratamiento de datos</a></p>
+            <p><a href="/terminosycondiciones/">Términos y condiciones</a></p>
+        </div>
+
+        <div class="footer_contacto"> 
+            <p>CONTACTO</p>
+            <br>
+            <a href="https://api.whatsapp.com/send?phone=573195472424" target="_blank"><img src='{% static "Images/Iconos/whatsapp.png" %}'></a>
+            <a href="https://www.instagram.com/biolimpieza_/" target="_blank"><img src='{% static "Images/Iconos/instagram.png" %}'></a>
+            <a href="https://facebook.com/100064084653293/" target="_blank"><img src='{% static "Images/Iconos/facebook.png" %}'></a>
+            <a href="/contacto/"><img src='{% static "Images/Iconos/correo.png" %}'></a>
+        </div>
+    </footer>  
+    <div id="configuracionUsuario">
+        <p
+            id="pNombreUsuario"
+            data-perm_adm ="{{perm_adm_usuario}}"
+            data-nombre_usuario = "{{nombre_usuario}}"
+            data-nombres_usuario ="{{nombres_usuario}}"
+            data-apellidos_usuario ="{{apellidos_usuario}}"
+            data-correo_usuario ="{{correo_usuario}}"
+            data-telefono_usuario = "{{telefono_usuario}}"
+            data-municipio_usuario = "{{municipio_usuario}}"
+            data-direccion_usuario = "{{direccion_usuario}}"
+            data-detalles_direccion_usuario = "{{detalles_direccion_usuario}}"
+            data-barrio_usuario = "{{barrio_usuario}}"
+        >Info
+        </p>
+    </div>
+    <script src='{% static "Scripts/index.js" %}'></script>
+    {% if pagina == "agenda" %}
+        <script src='{% static "Scripts/agenda.js" %}'></script>
+    {% endif %}
+    {% if pagina == "brigada" %}
+        <script src='{% static "Scripts/brigada.js" %}'></script>
+    {% endif %}
+    {% if pagina == "contacto" %}
+        <script src='{% static "Scripts/contacto.js" %}'></script>
+    {% endif %}
+    {% if pagina == "registro" %}
+        <script src='{% static "Scripts/registro.js" %}'></script>
+    {% endif %}
+    {% if pagina == "ingreso" %}
+        <script src='{% static "Scripts/ingreso.js" %}'></script>
+    {% endif %}
+    {% if pagina == "datosReserva" %}
+        <script src='{% static "Scripts/datosReserva.js" %}'></script>
+    {% endif %}
+    {% if pagina == "recuperacion_acceso" %}
+        <script src='{% static "Scripts/recuperacionAcceso.js" %}'></script>
+    {% endif %}
+    {% if pagina == "restablecimiento_pase" %}
+        <script src='{% static "Scripts/restablecimientoPase.js" %}'></script>
+    {% endif %}
+    {% if pagina == "gestion_datos" %}
+        <script src='{% static "Scripts/gestionDatos.js" %}'></script>
+    {% endif %}
+    {% if pagina == "inicio" or pagina == "terminos_condiciones" or pagina == "politica_tratamiento_datos" %}
+        <script src='{% static "Scripts/inicio.js" %}'></script>
+    {% endif %}
+    {% if pagina == "agenda_admin" %}
+        <script src='{% static "Scripts/agendaAdmin.js" %}'></script>
+    {% endif %}
+    {% if pagina == "eliminacion_cuenta" %}
+        <script src='{% static "Scripts/eliminarCuenta.js" %}'></script>
+    {% endif %}
+    {% if pagina == "conocenos" %}
+        <script src='{% static "Scripts/conocenos.js" %}'></script>
+    {% endif %}
+    {% if pagina == "colaboradoras" %}
+        <script src='{% static "Scripts/colaboradoras.js" %}'></script>
+    {% endif %}
+    {% if pagina == "no_encontrada" %}
+        <script src='{% static "Scripts/noEncontrada.js" %}'></script>
+    {% endif %}
+    {% if pagina == "pasarela" %}
+        <script src='{% static "Scripts/pasarelaPago.js" %}'></script>
+    {% endif %}
+    {% if pagina == "gestion_pedidos" %}
+        <script src='{% static "Scripts/gestionPedidos.js" %}'></script>
+    {% endif %}
+</body>
+</html>

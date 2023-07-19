@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href='{% static "Stylesheet/contacto.css" %}' rel="stylesheet">
+</head>
+<body>
+    <div class="section-main">
+        <div class="contenedor_mayor">
+            <div class="contenedor_ma">
+                <p><a href="https://api.whatsapp.com/send?phone=573195472424" target="_blank"><img style="height: 40px;" src='{% static "Images/Iconos/whatsapp.png" %}'></a></p>
+                <p><a href="https://www.instagram.com/biolimpieza_/" target="_blank"><img style="height: 40px;" src='{% static "Images/Iconos/instagram.png" %}'></a></p>
+                <p><a href="https://facebook.com/100064084653293/" target="_blank"><img style="height: 40px;" src='{% static "Images/Iconos/facebook.png" %}'></a></p>
+            </div>
+            <div class="contenedor_mb">
+                <div class="contenedor_introductorio">
+                    <h2>Contáctanos</h2>
+                    <p>Bienvenido al formulario PQRSF(Petición, Queja, Reclamo, Sugerencia, Felicitación)</p>
+                    <p>Por favor ingresa los datos y nos estaremos comunicando contigo</p>
+                </div>
+                <div class="contenedor_menor">
+                    <div class="contenedor_a">
+                        <form id="formContacto" action="/contacto/" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <p>
+                                <input type="text" id="txtNombreCt" name="nmNombreCt" placeholder="Nombres" required>
+                                <input type="text" id="txtApellidoCt"  name="nmApellidoCt" placeholder="Apellidos" required>
+                            </p>
+                            <p>
+                                <input type="email" id="txtCorreoCt" name="nmCorreoCt" placeholder="Correo electrónico" required>
+                            </p>
+                            <p>
+                                <input type="tel" id="txtTelefonoCt" onkeydown="ValidarSoloNumeros()" name="nmTelefonoCt" placeholder="Teléfono" required> 
+                                <select id="SlctTipoCt" name="nmTipoCt" required>
+                                    <option value="" disabled selected>Tipo de mensaje</option>
+                                    <option value="1">Petición</option>
+                                    <option value="2">Queja</option>
+                                    <option value="3">Reclamo</option>
+                                    <option value="4">Sugerencia</option>
+                                    <option value="5">Felicitación</option>
+                                </select>
+                            </p>
+                            <p>
+                                <textarea id="txtMensajeCt" name="nmMensajeCt" rows="15" placeholder="Escribe tu mensaje" required></textarea>
+                            </p>
+                            <p>
+                                <input type="checkbox" id="chkTerminosCt"> Acepto tanto los <a href="/terminosycondiciones/" target="_blank">términos y condiciones</a><br>
+                                como la <a href="/politicadetratamientodedatos/" target="_blank">política de tratamiento de datos</a>
+                            </p>
+                            <p id="pbtnEnviarCt"><button type="button" id="btnEnviarCt" onclick="EnviarFormularioContacto()">Enviar</button></p>
+                        </form>
+                    </div>
+                    <div class="contenedor_b">
+                        <img src='{% static "Images/Fondos/atencioncliente.png" %}'>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="configuracionPagina">
+        <p id="pAccion">{{accion}}</p>
+        <p id="pMensajeError">{{mensaje_error}}</p>
+    </div>
+</body>
+</html>
+
+

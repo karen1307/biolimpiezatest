@@ -1,0 +1,6 @@
+<form action="/registrarse/" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Registrarse</button>
+</form>
+{{mensaje}}

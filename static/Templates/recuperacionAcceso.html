@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href='{% static "Stylesheet/recuperacionAcceso.css" %}' rel="stylesheet">
+</head>
+<body>
+    <div class="section-main">
+        <div class="contenedor_mayor">
+            <div class="contenedor_a">
+                <img src='{% static "Images/Fondos/tecleo.jpg" %}'>
+            </div>
+            <div class="contenedor_b">
+                <h2>Recuperación de acceso</h2>
+                <p class="salida">Digita el correo electrónico asociado a tu cuenta</p>
+                <form id="formRecuperacionAcceso" action="/recuperaciondeacceso/" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p class="entrada"><input type="email" id="txtCorreoRec" name="nmCorreoRec" placeholder="Correo electrónico" required></p>
+                    <p class="salida">¿Ya recordaste tu contraseña? Ingresa<a href="/ingreso/"> aquí</a></p>
+                    <p class="salida">¿No tienes cuenta? Crea una <a href="/registro/">aquí</a></p>
+                    <p><button type="button" onclick="EnviarFormularioRecuperacion()">Enviar</button></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="configuracionPagina">
+        <p id="pAccion">{{accion}}</p>
+        <p id="pMensajeError">{{mensaje_error}}</p>
+    </div>
+</body>

@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href='{% static "Stylesheet/pasarelaPago.css" %}' rel="stylesheet">
+    <script src="https://www.paypal.com/sdk/js?client-id=AfRhKOk9CryNDCaIelTsuFOj6wmbyYkkjnKsTlZgd3xlGtncqyYdBFoyNashKR4o7RsHtnQd4_99lxSa&components=buttons&currency=USD"></script>
+</head>
+<body>
+    <div class="section-main">
+        <div class="contenedor_mayor">
+            <div class="contenedor_b">
+                <h2>Pasarela de pagos</h2>
+                <div id="paypal-button-container">
+                </div>
+                <div id="paypal-value">
+                    <p id="ppTitulo">Valor a pagar: </p>
+                    $<p id="pValorPag">{{valor_a_pagar}}</p>
+                </div>
+                <p id="pNumFactura" hidden>{{numero_factura}}</p>
+                <script>
+                    let valPag = parseInt(document.getElementById("pValorPag").innerHTML,10),
+                        numFactura = document.getElementById("pNumFactura").innerHTML,
+                        url = "/autorizacion/" + numFactura
+                    paypal.Buttons({
+                        style:{
+                            color:'blue',
+                            shape:'pill',
+                            label:'pay'
+                        },
+                        createOrder: function(data, actions){
+                            return actions.order.create({
+                                purchase_units: [{
+                                    amount: {
+                                        value: valPag
+                                    }
+                                }]
+                            });
+                        },
+                        onApprove: function(data,action){
+                            action.order.capture().then(function(detalles){
+                                alert("En hora buena, sus servicios han sido agendados")
+                                window.location.href= url 
+                            });
+                        },
+                        onCancel: function(data){
+                            alert("Pago cancelado")
+                        }
+                    }).render("#paypal-button-container")
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

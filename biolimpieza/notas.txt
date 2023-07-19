@@ -1,0 +1,151 @@
+﻿IMAGENES INICO BIOLIMPIEZA
+ANTERIOR: https://img.freepik.com/foto-gratis/superficie-limpieza-mujer_23-2148587268.jpg?w=1060&t=st=1678393837~exp=1678394437~hmac=3dcf146717e12b1838fcf00356b9be8001baebdba56918a98b0be62d5323113d
+NUEVA: https://www.freepik.es/foto-gratis/desinfectar-casa_8668287.htm#query=limpieza&position=3&from_view=search&track=sph
+
+FONDO BLANCO HUMO:
+background-color: #F0F0F0;
+
+PARA HACER EFECTO BLUR:
+backdrop-filter: blur(50px);
+
+EFECTO BLUR PROFUNDO:
+background-color: rgba(255, 255, 255, 0.3);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(10px);
+
+PONER BORDE A LETRA:
+color:black;
+-webkit-text-stroke: 1px white;
+
+//javascript for navigation bar effect on scroll
+SENTENCIA PARA EFECTO DE TRANSICIÓN DE COLOR Y TRANSPARENCIA AL DESPLAZARSE POR LA PÁGINA
+window.addEventListener("scroll", function(){
+    var header = document.querySelector("header");
+    header.classList.toggle('down', window.scrollY > 0);
+
+        //change logo
+        var logo = document.querySelector(".brand img");
+        if (window.scrollY>0) {
+            var url = "biolimpieza" + window.STATIC_URL + "/Logo/sin_fondo.png";
+            logo.setAttribute('src', url);
+        }else{
+            var url = window.STATIC_URL + "Logo/redondo.png";
+            logo.setAttribute('src', url);
+        }
+    });
+
+//javascript for navigation bar effect on scroll
+window.addEventListener("scroll", function(){
+    var header = document.querySelector("header");
+    header.classList.toggle('down', window.scrollY > 0);
+    });
+
+    //javascript for responsive navigation sidebar menu
+    var menu = document.querySelector('.menu');
+    var menuBtn = document.querySelector('.menu-btn');
+    var closeBtn = document.querySelector('.close-btn');
+
+    menuBtn.addEventListener("click", () => {
+    menu.classList.add('active');
+    });
+
+    closeBtn.addEventListener("click", () => {
+    menu.classList.remove('active');
+    });
+
+https://www.neoguias.com/mostrar-ocultar-elementos-html/
+
+//EXPRESION REGULAR PARA CORREOS:
+/^\w+([\.-]?\w+)*@(?:hotmail|outlook|yahoo|live|gmail)\.(?:com|es)$/
+
+//OPERACIONES CON FECHAS:
+https://j2logo.com/operaciones-con-fechas-en-python/
+
+//PARA CONECTAR A UNA SEGUNDA BASE DE DATOS:
+Importar en las vistas
+from django.db import connections
+
+Definir una función para conectarse a la base de datos:
+def conectarse_a_base_datos_2():
+    second_db_connection = connections['second_db']
+    with second_db_connection.cursor() as cursor:
+        cursor.execute('SELECT * FROM pedidos')
+        results = cursor.fetchall()
+
+        for row in results:
+            print(row)
+
+Función para insertar en la base de datos:
+second_db_connection = connections['second_db']
+tipo_mensaje_dashb = tipo_mensaje_.descripcion
+fecha_vencimiento = fecha_radicacion + timedelta(15)
+with second_db_connection.cursor() as cursor:
+    query = '''
+        INSERT INTO mensajes (tipo_mensaje,fecha_radicacion,fecha_vencimiento)
+        VALUES ("%s", "%s", "%s");
+        ''' %(tipo_mensaje_dashb,fecha_radicacion,fecha_vencimiento)
+    cursor.execute(query)
+
+En settings.py definir la configuración de la bd:
+'second_db': {
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': 'localhost',
+        'PORT': '3307',
+        'USER': 'root',
+        'PASSWORD': '',
+        'NAME': 'dashb_biolimpieza',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
+    }
+
+
+//MANEJO DE FORMULARIOS
+from .forms import ClienteForm
+
+def registrarse(request):
+    diccionario = {
+        "form": ClienteForm()
+    }
+    if(request.method == "POST"):
+        formulario = ClienteForm(data=request.POST)
+        if(formulario.is_valid()):
+            formulario.save()
+            diccionario["mensaje"] = "Usuario creado correctamente"
+        else:
+            diccionario["form"] = formulario
+
+    return render(request,"registrarse.html",diccionario)
+
+//PASAR HORA ACTUAL A STRING EN JAVASCRIPT
+new Date().toLocaleTimeString()
+
+//MÉTODO ANTERIOR PARA JSON:
+let cadena = agendas[itemSeleccionado-1].replace(/'/g, "\""),
+    agenda = JSON.parse(cadena),
+    dia = i-6
+if(agenda[mes][dia.toString()][posicion] == 0){
+    disponibilidad = true
+}
+
+//ITEM SELECCIONADO EN UN SELECTOR (JAVASCRIPT):
+itemSeleccionado = selector.selectedIndex
+
+//PARA PREGUNTAR SI UN VECTOR CONTIENE UN VALOR:
+ variableBooleana = vector.includes(valor)
+
+ //TRABAJO CON JSON EN PYTHON:
+ruta = "biolimpieza/static/Json/colaboradoras.json"
+file = open(ruta, "r")
+colaboradoras_json =  json.load(file)
+file.close
+
+for colaboradora in colaboradoras_json:
+    ruta_agenda = "biolimpieza/static/Json/agendas/" + colaboradoras_json[colaboradora]["agenda"]
+    file_agenda = open(ruta_agenda, "r")
+    agenda_json = json.load(file_agenda)
+    file_agenda.close
+    colaboradoras_json[colaboradora]["agenda"] = agenda_json
+
+//PARA HACER LISTA DE REQUIERIMIENTOS:
+pip3 freeze > requirements.txt

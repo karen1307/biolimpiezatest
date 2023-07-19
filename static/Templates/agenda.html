@@ -1,0 +1,221 @@
+{% load static %}
+<html lang="es">
+<head>
+    <link href='{% static "Stylesheet/agenda.css" %}' rel="stylesheet">
+</head>
+<body>
+    <div class="section-main">
+        <div class="contenedor_mayor">
+            <div id="botonesAgendarPor">
+                <button type="button" class="ag_activo" onclick="SeleccionarTipoAgendamiento(this)">
+                    <img src='{% static "Images/Iconos/calendario.png" %}'> 
+                    Agendar por fecha
+                </button>
+                <button type="button" class="ag_inactivo" onclick="SeleccionarTipoAgendamiento(this)">
+                    <img src='{% static "Images/Iconos/colaboradora.png" %}'> 
+                    Agendar por colaboradora
+                </button>
+            </div>
+            <div class="contenedor_menor">
+                <div class="contenedor_a">
+                    <p>Seleccione una jornada:</p><br>
+                    <div id="botonesHoras">
+                        <button type="button" class="hr_activo" onclick="seleccionarNumeroHorasServicio(this)">
+                            8 horas
+                        </button>
+                        <button type="button" class="hr_inactivo" onclick="seleccionarNumeroHorasServicio(this)">
+                            4 horas - mañana
+                        </button>
+                        <button type="button" class="hr_inactivo" onclick="seleccionarNumeroHorasServicio(this)">
+                           4 horas - tarde
+                        </button>
+                    </div>
+                    <br>
+                    <p id="pNumHorasAgenda">
+                        <input type="text" id="txtNumHorasAgenda" placeholder="Número de horas" required value="completa">
+                    </p>
+                    <div class="calendario" id="calendarioMesActual">
+                        <p id="pNumeroDiasMes" class="p_numero_dias_mes">{{numero_dias_mes}}</p>
+                        <p id="pDiaComienzoMes" class="p_dia_comienzo_mes">{{dia_comienzo_mes}}</p>
+                        <p id="pDiaActual">{{dia_actual}}</p>
+                        <p id="pMes" class="p_mes">{{mes}}</p>
+                        <p id="pAnio" class="p_anio">{{anio}}</p>
+                        <h4><button class="btn_anterior_mes" disabled><</button> {{mes}} de {{anio}} <button class="btn_siguiente_mes" onclick="MostrarCalendario('0')">></button></h4>
+                        <br>
+                        <ol>
+                            <li class="nombre_dia">Lun</li>
+                            <li class="nombre_dia">Mar</li>
+                            <li class="nombre_dia">Mie</li>
+                            <li class="nombre_dia">Jue</li>
+                            <li class="nombre_dia">Vie</li>
+                            <li class="nombre_dia">Sab</li>
+                            <li class="nombre_dia">Dom</li>
+                            <li class="primer_dia disponible">1</li>
+                            <li class="disponible">2</li>
+                            <li class="disponible">3</li>
+                            <li class="disponible">4</li>
+                            <li class="disponible">5</li>
+                            <li class="disponible">6</li>
+                            <li class="disponible">7</li>
+                            <li class="disponible">8</li>
+                            <li class="disponible">9</li>
+                            <li class="disponible" data-numdia="10">10</li>
+                            <li class="disponible">11</li>
+                            <li class="disponible">12</li>
+                            <li class="disponible">13</li>
+                            <li class="disponible">14</li>
+                            <li class="disponible">15</li>
+                            <li class="disponible">16</li>
+                            <li class="disponible">17</li>
+                            <li class="disponible">18</li>
+                            <li class="disponible">19</li>
+                            <li class="disponible">20</li>
+                            <li class="disponible">21</li>
+                            <li class="disponible">22</li>
+                            <li class="disponible">23</li>
+                            <li class="disponible">24</li>
+                            <li class="disponible">25</li>
+                            <li class="disponible">26</li>
+                            <li class="disponible">27</li>
+                            <li class="disponible">28</li>
+                            <li class="disponible">29</li>
+                            <li class="disponible">30</li>
+                            <li class="disponible">31</li>
+                        </ol>
+                    </div>
+                    <div class="calendario" id="calendarioMesSiguiente">
+                        <p id="pNumeroDiasMesSiguiente" class="p_numero_dias_mes">{{numero_dias_mes_siguiente}}</p>
+                        <p id="pDiaComienzoMesSiguiente" class="p_dia_comienzo_mes">{{dia_comienzo_mes_siguiente}}</p>
+                        <p id="pMesSiguiente" class="p_mes">{{mes_siguiente}}</p>
+                        <p id="pAnioSiguiente" class="p_anio">{{anio_siguiente}}</p>
+                        <h4><button class="btn_anterior_mes" onclick="MostrarCalendario('1')"><</button> {{mes_siguiente}} de {{anio_siguiente}} <button class="btn_siguiente_mes" disabled>></button></h4>
+                        <br>
+                        <ol>
+                            <li class="nombre_dia">Lun</li>
+                            <li class="nombre_dia">Mar</li>
+                            <li class="nombre_dia">Mie</li>
+                            <li class="nombre_dia">Jue</li>
+                            <li class="nombre_dia">Vie</li>
+                            <li class="nombre_dia">Sab</li>
+                            <li class="nombre_dia">Dom</li>
+                            <li class="primer_dia_siguiente">1</li>
+                            <li class="disponible">2</li>
+                            <li class="disponible">3</li>
+                            <li class="disponible">4</li>
+                            <li class="disponible">5</li>
+                            <li class="disponible">6</li>
+                            <li class="disponible">7</li>
+                            <li class="disponible">8</li>
+                            <li class="disponible">9</li>
+                            <li class="disponible">10</li>
+                            <li class="disponible">11</li>
+                            <li class="disponible">12</li>
+                            <li class="disponible">13</li>
+                            <li class="disponible">14</li>
+                            <li class="disponible">15</li>
+                            <li class="disponible">16</li>
+                            <li class="disponible">17</li>
+                            <li class="disponible">18</li>
+                            <li class="disponible">19</li>
+                            <li class="disponible">20</li>
+                            <li class="disponible">21</li>
+                            <li class="disponible">22</li>
+                            <li class="disponible">23</li>
+                            <li class="disponible">24</li>
+                            <li class="disponible">25</li>
+                            <li class="disponible">26</li>
+                            <li class="disponible">27</li>
+                            <li class="disponible">28</li>
+                            <li class="disponible">29</li>
+                            <li class="disponible">30</li>
+                            <li class="disponible">31</li>
+                        </ol>
+                    </div>
+                    <br>
+                    <div id="listaServiciosAgendados">
+                        <label for="cantidadServicios">Cantidad.Servicios</label>
+                        <input id="cantidadServicios" type="text" readonly value="0">
+                        <br>
+                        <label for="totalPagar">Total a pagar</label>
+                        <input id="totalPagar" type="text" readonly value="0">
+                        <form id="formEnlacePasarela" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="text" class="tbl_conf" id="totalPagarPasarela" type="text" value="0" name="nmTotalPagarPasarela" readonly>
+                            <input type="text" class="tbl_conf" id="cantidadServiciosPasarela" type="text" value="0" name="nmCantidadServiciosPasarela" readonly>
+                            <input type="text" class="tbl_conf" id="codServicioPasarela" type="text" value="{{cod_servicio}}" name="nmCodServicioPasarela" readonly>
+                            <input type="text" class="tbl_conf" id="codPedidoPasarela" type="text" value="{{cod_pedido}}" name="nmCodPedidoPasarela" readonly>
+                            <input type="text" class="tbl_conf" id="codReceptorPasarela" type="text" value="{{cod_receptor}}" name="nmCodReceptorPasarela" readonly>
+                            <input type="text" class="tbl_conf" id="jsonPasarela" type="text" name="nmJsonPasarela" readonly>
+                            <table id="tablaServiciosAgendados" class=tbl_conf>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Jornada</th>
+                                    <th>Colaboradora</th>
+                                    <th>Valor</th>
+                                    <th>Acciones</th>
+                                    <th class="tbl_conf">Mes</th>
+                                    <th class="tbl_conf">Dia</th>
+                                </tr>
+                                <tr id="datosFechaSeleccionada" class=tbl_conf>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td class="botones_accion_registro">
+                                        <button class="btnConfirmarRegistro activado" type="button" onclick="ConfirmarDia()"><img src='{% static "Images/Iconos/check.png" %}'>Confirmar</button>
+                                        <button class="btnEditarRegistro desactivado" type="button"><img src='{% static "Images/Iconos/lapiz.png" %}'>Editar</button>
+                                        <button class="btnDescartarRegistro activado" type="button" onclick="DescartarDia(this)"><img src='{% static "Images/Iconos/borrar.png" %}'>Descartar</button>
+                                    </td>
+                                    <td class="tbl_conf">--</td>
+                                    <td class="tbl_conf">--</td>
+                                </tr>
+                            </table>
+                            <button type="button" id="btnPagar" onclick="pasarApasarela()">Pasar a la pasarela de pago</button>
+                        </form>
+                        <input id="valorJornadaCompleta" type="text" value="{{precio_jornada_completa}}">
+                        <input id="valorMediaJornadaManana" type="text" value="{{precio_jornada_am}}">
+                        <input id="valorMediaJornadaTarde" type="text" value="{{precio_jornada_pm}}">
+                    </div>
+                </div>
+                <div class="contenedor_b">
+                    <select id="selectorColaboradora" onchange="MostrarColaboradora()" disabled>
+                        <option disabled selected value="0">Seleccione una colaboradora</option>
+                        {% for colaboradora in colaboradoras %}
+                        <option value="{{colaboradora.id}}">{{colaboradora.identidad.usuario.get_full_name}}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="colaboradoras">
+                        {% for colaboradora in colaboradoras %}
+                            <div class="colaboradora" id="{{colaboradora.id}}">
+                                <div class="foto">
+                                    <img src="{{colaboradora.fotografia.url}}">
+                                </div>
+                                <div class="caracteristicas">
+                                    <h4>{{colaboradora.identidad.usuario.get_full_name}}</h4>
+                                    <p>Profesional en limpieza</p>
+                                    <p>▪ Seguridad social <br>▪ ARL ▪ Caja de compensación</p>
+                                    <p>▪ Dotación ▪ Capacitación</p>
+                                    <p>▪ Salud Ocupacional</p>
+                                </div>
+                                <div class="accion">
+                                    <button onclick="SeleccionarColaboradora(this)">Seleccionar</button>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div id="listaAgendas">
+                        {% for agenda in agendas %}
+                            <div class="agenda">
+                                <p class="agend_fecha">{{agenda.fecha}}</p>
+                                <p class="agend_id_prest_servicio">{{agenda.prestacion_servicio.id}}</p>
+                                <p class="agend_id_colaborador">{{agenda.colaborador.id}}</p>
+                                <p class="agend_jornada">{{agenda.prestacion_servicio.jornada}}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

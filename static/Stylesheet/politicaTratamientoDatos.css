@@ -1,0 +1,30 @@
+.section-main .contenedor_mayor{
+    background-color: whitesmoke; 
+    width: 100%; 
+    margin: auto;
+    height: auto; 
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9); 
+    margin-top: 120px;
+    text-align: center;
+    justify-items: center;
+    padding: 10px;
+}
+
+h2{
+    color:#048C26;
+    Font-family: Bodoni MT, Bodoni 72, Didot, Didot LT STD, Hoefler Text, Garamond, Times New Roman, serif;
+    margin: 2px;
+    margin-bottom: 5px;
+}
+
+.contenedor_mayor p,
+.contenedor_mayor ul li
+{
+    text-align: justify;
+    margin: 10px;
+}
+
+.contenedor_mayor ul li{
+    margin-left: 25px;
+}

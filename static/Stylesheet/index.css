@@ -1,0 +1,466 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: verdana;
+  }
+
+  input[type=text],
+  input[type=email],
+  input[type=password],
+  input[type=tel],
+  input[type=number],
+  select,
+  textarea{
+    border-radius: 20px;
+    border-width: thin;
+    border-color:#048C26;
+    padding: 2px;
+    outline: none;
+  }
+
+  body{
+    min-height: 100vh;
+  }
+
+  button{
+    padding: 5px;
+  }
+
+  header .brand img{
+    height: 80px;
+  }
+
+  header{
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 80px;
+    transition: 0.6s;
+  }
+  
+  header.down{
+    background-color: #F0F0F0;
+    padding: 15px 80px;
+  }
+  
+  header .brand{
+    color: #F0F0F0;
+    font-size: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 2px;
+  }
+  
+  header .menu{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  header .menu ul{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header .menu ul li{
+    list-style: none;
+  }
+
+  header .menu ul li ul.menu_servicios,
+  header .menu ul li ul.menu_administrativo
+  {
+    margin-top: 10px;
+    background-color: #F0F0F0;
+    border-radius: 20px;
+    padding: 5px;
+    display: none;
+    position: absolute;
+    min-width: 140px;
+  }
+
+  
+  header .menu ul li ul.menu_servicios li,
+  header .menu ul li ul.menu_administrativo li
+  {
+    padding: 5px;
+    margin: 2px;
+  }
+
+  header .menu ul li:hover ul.menu_servicios,
+  header .menu ul li:hover ul.menu_administrativo
+  {
+
+    display: block;
+  }
+
+  header .menu ul li ul.menu_servicios li a,
+  header .menu ul li ul.menu_administrativo li a
+  {
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  header .menu a{
+    font-weight: 600;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    margin: 0 30px;
+    padding: 7px 12px;
+    border-radius: 20px;
+    transition: 0.3s;
+    transition-property: color;
+  }
+
+  header .menu a.m_texto:hover{
+    color: #000;
+    background: #F0F0F0;
+  }
+  
+  .section-main{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .section-main .tarjeta{
+    margin: 2px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 270px;
+    width: 250px;
+    display: inline;
+  }
+
+  .section-main .tarjeton_registro
+  {
+    margin-top: 70px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 460px;
+    width: 65%;
+    display: inline;
+    background-color: #F0F0F0;
+  }
+
+  .section-main .tarjeta *{
+    margin:5px;
+  }
+
+  .section-main .tarjeta .icono_tarjeta, 
+  .section-main .tarjeton_registro .icono_tarjeta
+  {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .section-main .tarjeta .texto_tarjeta, 
+  .section-main .tarjeton_registro .texto_tarjeta
+  {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .section-main .tarjeta .icono_tarjeta img, 
+  .section-main .tarjeton_registro .icono_tarjeta img
+  {
+    height: 50px; 
+    vertical-align: middle;
+  }
+
+  .section-main .tarjeta .texto_tarjeta .btn_tarjeta{
+    border-radius: 10px;
+    border-style: solid;
+    border-width: thin;
+  }
+
+  .section-main .tarjeta .texto_tarjeta .btn_hogar{
+    background-color: #048C26;
+    border-color: #048C26;
+    color:#F0F0F0
+  }
+
+  .section-main .tarjeta .texto_tarjeta .btn_oficina{
+    background-color: #F0F0F0;
+    border-color: #F0F0F0;
+  }
+
+  .section-main .tarjeta .texto_tarjeta .btn_brigada{
+    background-color: #96D977;
+    border-color: #96D977;
+  }
+
+  .section-main .tarjeta h4{
+    text-align: center;
+  }
+
+  .section-main .tjt_hogar, .section-main .tjt_contacto{
+    background-color:#F0F0F0;
+  }
+
+  .section-main .tjt_hogar h4, .section-main .tjt_oficina h4{
+    color:#048C26;
+  }
+
+  .section-main .tjt_oficina{
+    background-color:#96D977;
+  }
+
+  .section-main .tjt_brigada{
+    background-color:#048C26;
+  }
+
+  .section-main .tjt_brigada h4{
+    color:#96D977;
+  }
+
+  .section-main .tjt_brigada p{
+    color:#F0F0F0;
+  }
+
+  .section-main .icono{
+    height: 30px;
+  }
+
+  .section-two{
+    padding: 20px;
+  }
+  
+  .st-a, .st-b{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .st-a div, .st-b div{
+    padding: 5px;
+    margin:5px;
+    width: 50%;
+    height: 15em;
+    border-radius: 10px;
+  }
+
+  .st-a div *, .st-b div *{
+    margin: 5px;
+  }
+
+  .section-two h4{
+    color:#048C26;
+  }
+
+  .section-two h3{
+    color:#404040;
+  }
+
+  .st-a .st-a1 p{
+    text-align: justify;
+  }
+
+  header .btn{
+    color: #049DD9;
+    font-size: 25px;
+    cursor: pointer;
+    display: none;
+  }
+
+  a, a:visited, a:link, a:hover, a:focus, a:active{
+    text-decoration: none;
+  }
+
+  .tjt_oficina .texto_tarjeta button a,
+  .tjt_brigada .texto_tarjeta button a
+  {
+    color:#000;
+  }
+
+  .section-main .tarjeta .texto_tarjeta button a, 
+  .section-main .tarjeta .texto_tarjeta button a:visited, 
+  .section-main .tarjeta .texto_tarjeta button a:hover, 
+  .section-main .tarjeta .texto_tarjeta button a:focus, 
+  .section-main .tarjeta .texto_tarjeta button a:active{
+    text-decoration: none;
+  }
+
+  .section-main .tjt_hogar .texto_tarjeta .btn_tarjeta a{
+    color:#F0F0F0;
+  }
+
+  button:hover{
+    cursor: pointer;
+  }
+
+  button:disabled:hover{
+    cursor:default;
+  }
+
+  #imgPasos{
+    height: 85%;
+    width: 80%;
+  }
+
+  @media (max-width: 991px){
+    header, header.down{
+        padding: 20px 40px;
+    }
+    header .btn{
+      display: block;
+    }
+  
+    header .menu{
+      position: fixed;
+      background: #048C26;
+      min-width: 330px;
+      height: 100vh;
+      top: 0;
+      right: -100%;
+      padding: 80px 50px;
+      transition: 0.5s;
+      transition-property: right;
+    }
+
+    header .menu ul{
+        flex-direction: column;
+      }
+  
+    header .menu.active{
+      right: 0;
+    }
+  
+    header .menu .close-btn{
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 25px;
+    }
+  
+    header .menu a{
+      display: block;
+      font-size: 20px;
+      margin: 20px;
+      padding: 0 15px;
+    }
+  }
+  
+  footer{
+    color: white;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #049DD9;
+  }
+
+  footer a{
+    color: white;
+  }
+
+  footer a:hover{
+    text-decoration: underline;
+  }
+
+  footer div{
+    margin: 20px;
+    padding: 20px;
+  }
+
+  footer .footer_logo img{
+    height: 100px;
+  }
+
+  footer .footer_contacto img{
+    height: 30px;
+    margin: 5px;
+  }
+
+  .section-two .st-a .st-a2{
+    display:flex;
+  } 
+
+  .section-two .st-a .st-a2 .st-a2_2 img{
+    height: 200px;
+  } 
+
+  @media only screen and (max-width: 914px) {
+
+    *{
+      font-size: 14px;
+    }
+
+    footer, .section-main{
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .section-main .tarjeta .icono_tarjeta{
+      margin-bottom: 0;
+    }
+
+    .section-main .tarjeta .texto_tarjeta, .section-main .tarjeta .texto_tarjeta h4{
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    .section-two .st-a, .section-two .st-b{
+      display:inline
+    }
+
+    .section-two .st-a div, .section-two .st-b div{
+      width: 100%;
+      height: 100%;
+    }
+
+    footer div, .section-main div{
+      margin: 10px 0;
+      padding: 10px;
+    }
+
+    .section-main{
+      margin-top: 110px;
+    }
+
+    .section-main .tarjeta{
+      height: 250px;
+      width: 300px;
+    }
+
+    .section-main .tarjeton_regisro
+    {
+      margin: 0;
+      width: 100%;
+      height: max-content;
+    }
+
+    #txtMensajeCt{
+      height: auto;
+      width: min-content;
+    }
+
+    .section-two .st-a .st-a2 .st-a2_2{
+      display:none;
+    } 
+
+  }

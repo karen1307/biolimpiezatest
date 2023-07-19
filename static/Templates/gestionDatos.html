@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href='{% static "Stylesheet/gestionDatos.css" %}' rel="stylesheet">
+</head>
+<body>
+    <div class="section-main">
+        <div class="contenedor_mayor">
+            <div class="contenedor_a">
+                <img src='{% static "Images/Fondos/tecleo.jpg" %}'>
+            </div>
+            <div class="contenedor_b">
+                <h2>Gestión de mis datos</h2>
+                <p class="salida">Edita tu información</p>
+                <form id="formGestionDatos" action="/gestionarmisdatos/" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p class="entrada">
+                        <input type="text" id="txtNombreGestDatos" name="nmNombresGestDatos" placeholder="Nombres" required>
+                        <input type="text" id="txtApellidoGestDatos" name="nmApellidosGestDatos" placeholder="Apellidos" required>
+                    </p>
+                    <p class="entrada">
+                        <input type="email" id="txtCorreoGestDatos" name="nmCorreoGestDatos" placeholder="Correo electrónico" required>
+                    </p>
+                    <p class="entrada">
+                        <input type="text" id="txtTelefonoGestDatos" name="nmTelefonoGestDatos" placeholder="Teléfono" required>
+                        <select id="slcMunicipioGestDatos" name="nmMunicipioGestDatos" required>
+                            <option selected disabled value="">Municipio</option>
+                            <optgroup label="Zona centro">
+                                <option value="1">Medellín</option>
+                            </optgroup>
+                            <optgroup label="Zona norte">
+                                <option value="2">Bello</option>
+                                <option value="3">Copacabana</option>
+                                <option value="4">Girardota</option>
+                            </optgroup>
+                            <optgroup label="Zona sur">
+                                <option value="5">Itagüí</option>
+                                <option value="6">Envigado</option>
+                                <option value="10">Sabaneta</option>
+                                <option value="7">La Estrella</option>
+                                <option value="8">Caldas</option>
+                            </optgroup>
+                        </select>
+                    </p>
+                    <p class="entrada">
+                        <input type="text" id="txtDireccionGestDatos" name="nmDireccionGestDatos" placeholder="Dirección" required>
+                    </p>
+                    <p class="entrada">
+                        <input type="text" id="txtDetallesDireccionGestDatos" name="nmDetallesDireccionGestDatos" placeholder="Edificio, Apartamento">
+                        <input type="text" id="txtBarrioGestDatos" name="nmBarrioGestDatos" placeholder="Barrio" required>
+                    </p>
+                    <p class="entrada">
+                        <input type="password" id="txtPaseGestDatos" name="nmPaseGestDatos" placeholder="contraseña" required>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="chkActualizarPaseGestDatos" onchange="verificarControladorCambioPase()"> Establecer nueva contraseña
+                    </p>
+                    <p class="entrada">
+                        <input type="password" id="txtNuevoPaseGestDatos" name="nmNuevoPaseGestDatos" placeholder="Nueva contraseña" required>
+                        <input type="password" id="txtNuevoPaseConfGestDatos" name="nmNuevoPaseConfGestDatos" placeholder="Confirme contraseña" required>
+                    </p>
+                    <p>
+                        <button type="button" id="btnEliminarCuentaGestDatos" onclick="PantallaEliminarDatos()">Eliminar mi cuenta</button>
+                        <button type="button" id="btnActualizarGestDatos" onclick="ActualizarDatos()">Actualizar mis datos</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="configuracionPagina">
+        <p id="pAccion">{{accion}}</p>
+        <p id="pMensajeError">{{mensaje_error}}</p>
+    </div>
+</body>
+</html>
+
+    
+        

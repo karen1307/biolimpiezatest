@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href='{% static "Stylesheet/eliminarCuenta.css" %}' rel="stylesheet">
+</head>
+<body>
+    <div class="section-main">
+        <div class="contenedor_mayor">
+            <div class="contenedor_a">
+                <img src='{% static "Images/Fondos/tecleo.jpg" %}'>
+            </div>
+            <div class="contenedor_b">
+                <h2>Eliminación de cuenta</h2>
+                <p class="salida">Nos entristece saber que deseas irte</p>
+                <p id="pTextoInformativo">
+                    Tu cuenta será desactivada y se enviará una petición a nuestro personal
+                    para proceder con su eliminación. Ten en cuenta que si tienes reservas
+                    de servicios pendientes por aplicar o si no estás a paz y salvo, tu cuenta
+                    no podrá ser eliminada hasta resolver dichas situaciones. Una vez realizadas las 
+                    validaciones,tu información será eliminada de nuestras bases de datos y se te enviará
+                    un correo electrónico confirmando el procedimiento. Si tienes algún comentario 
+                    o necesitas ponerte en contacto con nosotros, no dudes en hacerlo. Esperamos 
+                    que en el futuro puedas reconsiderar volver a nuestro sitio, siempre serás 
+                    bienvenido en nuestra comunidad. ¡Hasta pronto!
+                </p>
+                <form id="formEliminacionCuenta" method="POST" action="/gestionarmisdatos/eliminarcuenta/" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <textarea id="txtAreaEliminacionCuenta" name="nmTxtAreaEliminacionCuenta" placeholder="Escribe tus comentarios (opcional)" rows="10" cols="50" ></textarea>
+                    <p class="entrada">
+                        <input type="password" id="txtPaseEliminacionCuenta" name="nmPaseEliminacionCuenta" placeholder="contraseña" required>
+                    </p>
+                    <p>
+                        <button type="button" id="btnCancelarElimCuenta" onclick="cancelarEliminacionCuenta()">Cancelar</button>
+                        <button type="button" id="btnEliminarCuenta" onclick="eliminarCuenta()">Eliminar mi cuenta</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="configuracionPagina">
+        <p id="pAccion">{{accion}}</p>
+        <p id="pMensajeError">{{mensaje_error}}</p>
+    </div>
+</body>
+</html>
+
+    
+        

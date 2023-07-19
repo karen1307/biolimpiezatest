@@ -1,0 +1,106 @@
+{% load static %}
+<html lang="es">
+<head>
+    <link href='{% static "Stylesheet/brigada.css" %}' rel="stylesheet">
+</head>
+<body>
+    <div class="section-main">
+        <div class="contenedor_mayor">
+            <div class="contenedor_a">
+                <img src='{% static "Images/Fondos/basico1.jpg" %}'>
+            </div>
+            <div class="contenedor_b">
+                <form id="formCtzBrigada" action="/brigada/cotizacion/" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %} 
+                    <h2>Cotización Servicio de Brigada</h2>
+                    Servicio para:
+                        <select id="slcPersonaCtzBrigada" name="nmPersonaCtzBrigada" onclick="SeleccionarTipoRelleno()" required>
+                            <option value="0">Mí, usar mis datos</option>
+                            <option value="1">Mí, usar otra dirección</option>
+                            <option value="2">Otra persona</option>
+                        </select>
+                    <p>
+                        <input type="text" id="txtNombreCtzBrigada" name="nmNombreCtzBrigada" placeholder="Nombres" required>
+                        <input type="text" id="txtApellidoCtzBrigada" name="nmApellidoCtzBrigada" placeholder="Apellidos" required>
+                    </p>
+                    <p>
+                        <input type="email" id="txtCorreoCtzBrigada" name="nmCorreoCtzBrigada" placeholder="Correo electrónico" required>
+                    </p>
+                    <p>
+                        <input type="text" id="txtTelefonoCtzBrigada" name="nmTelefonoCtzBrigada" placeholder="Teléfono" required>
+                        <select id="slcMunicipioCtzBrigada" name="nmMunicipioCtzBrigada" required>
+                            <option value="" selected disabled>Municipio</option>
+                            <optgroup label="Zona centro">
+                                <option value="1">Medellín</option>
+                            </optgroup>
+                            <optgroup label="Zona norte">
+                                <option value="2">Bello</option>
+                                <option value="3">Copacabana</option>
+                                <option value="4">Girardota</option>
+                            </optgroup>
+                            <optgroup label="Zona sur">
+                                <option value="5">Itagüí</option>
+                                <option value="6">Envigado</option>
+                                <option value="10">Sabaneta</option>
+                                <option value="7">La Estrella</option>
+                                <option value="8">Caldas</option>
+                            </optgroup>
+                        </select>
+                    </p>
+                    <p>Tipo de espacio</p>
+                    <div id="botonesTipoEspacio">
+                        <button type="button" class="esp_activo" onclick="SeleccionarTipoEspacio(this)">Hogar</button>
+                        <button type="button" class="esp_inactivo" onclick="SeleccionarTipoEspacio(this)">Edificio</button>
+                        <button type="button" class="esp_inactivo" onclick="SeleccionarTipoEspacio(this)">Oficina</button>
+                        <button type="button" class="esp_inactivo" onclick="SeleccionarTipoEspacio(this)">Bodega</button>
+                        <button type="button" class="esp_inactivo" onclick="SeleccionarTipoEspacio(this)">Local</button>
+                    </div>
+                    <p>
+                        <input type="text" id="txtEspacioCtzBrigada" name="nmTipoEspacio" required disabled>
+                    </p>
+                    <p>
+                        <input type="text" id="txtDireccionCtzBrigada" placeholder="Dirección" name="nmDireccion" required>
+                    </p>
+                    <p>
+                        <input type="text" id="txtDetallesDireccionCtzBrigada" name="nmDetallesDireccion" placeholder="Edificio, Apartamento">
+                        <input type="text" id="txtBarrioCtzBrigada" name="nmBarrio" placeholder="Barrio" required>
+                    </p>
+                    <div class="grupo_CtzBrigada">
+                        <p>
+                            <label for="txtMetrosEspacioCtzBrigada" class="lbl_num_CtzBrigada">Met.cuadr. del espacio</label>
+                            <input type="number" id="txtMetrosEspacioCtzBrigada" name="nmMetrosEspacioCtzBrigada" value="0" min="0" step="any" required>
+                        </p>
+                        <p>
+                            <label for="txtNroPuestosTrabajoCtzBrigada" class="lbl_num_CtzBrigada"> Nº puestos de trabajo</label>
+                            <input type="number" id="txtNroPuestosTrabajoCtzBrigada" name="nmNroPuestosTrabajoCtzBrigada" value="0" min=0 required>
+                        </p>
+                    </div>       
+                    <div class="grupo_CtzBrigada">
+                        <p>
+                            <label for="txtNroCocinetasCtzBrigada" class="lbl_num_CtzBrigada">Número de cocinetas </label>
+                            <input type="number" id="txtNroCocinetasCtzBrigada" name="nmNroCocinetasCtzBrigada" value="0" min=0 required>
+                        </p>
+                        <p>
+                            <label for="txtNroBanosCtzBrigada" class="lbl_num_CtzBrigada">Número de baños</label>
+                            <input type="number" id="txtNroBanosCtzBrigada" name="nmNroBanosCtzBrigada" value="0" min=0 required>
+                        </p>
+                    </div>
+                    <p>
+                        <input type="checkbox" id="chkTerminosCtzBrigada"> Acepto tanto los <a href="/terminosycondiciones/" target="_blank">términos y condiciones</a><br>
+                        como la <a href="/politicadetratamientodedatos/" target="_blank">política de tratamiento de datos</a>
+                    </p>
+                    <p>
+                        <button type="button" id="btnCotizarDtsCtzBrigada" onclick="EnviarFormularioBrigada()">Cotizar</button>
+                    </p>
+                    <p>
+                        <input type="submit" id="sbmFormCtzBrigada" value="Cotizar" hidden>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="configuracionPagina">
+        <p id="pAccion">{{accion}}</p>
+        <p id="pMensajeError">{{mensaje_error}}</p>
+    </div>
+</body>

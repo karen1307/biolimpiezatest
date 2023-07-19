@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href='{% static "Stylesheet/pasarelaPago.css" %}' rel="stylesheet">
+</head>
+<body>
+    <div class="section-main">
+        <div class="contenedor_mayor">
+            <div class="contenedor_a">
+                <img src='{% static "Images/Fondos/compra.png" %}'>
+            </div>
+            <div class="contenedor_b">
+                <h2>Pasarela de pagos</h2>
+                <img src='{% static "Images/Fondos/wompiLogo.png" %}'>
+                <p id="pCertificadoPCI">
+                    Nuestra pasarela cuenta con certificación PCI DSS para la seguridad de las transacciones 
+                    en línea con tarjetas de crédito y la protección de los datos de los tarjetahabientes.
+                </p>
+                <div id="divTotalPasarelaPago">
+                    <h3 id="hTotalPasarelaPago">Total a pagar</h3>
+                    <p id="pCOPPasarelaPago">COP $ {{valor_a_pagar}}</p>
+                </div>
+                <p id="pCheck">
+                    <input type="checkbox" id="chkPasarelaPago"> Acepto haber leído tanto los <a href="https://wompi.com/assets/downloadble/TC-Usuarios-Colombia.pdf" target="_blank">términos y condiciones<br>
+                    como la política de privacidad</a> para hacer esta compra.
+                </p>
+                <div id="sbmtPagarDiv">
+                    <form id="formInicioPasarelaPago" action="/pasareladepago/transaccion/" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="text" id="idSession" type="text" name="nmidSession" readonly>
+                        <input type="text" id="valorPagar" type="text" name="nmvalorPagar" value="{{valor_a_pagar}}" readonly>
+                        <button type="button" id="btnPagarPasarelaPago" onclick="Siguiente()">Pagar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.wompi.co/libs/js/v1.js" data-public-key="pub_test_SDsLbSeCneh3idOPZzwdSMEf1KYVbRr5"></script>
+</body>
+</html>

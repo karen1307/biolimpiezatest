@@ -1,0 +1,103 @@
+.section-main .contenedor_mayor{
+    margin-top:150px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.section-main .contenedor_mayor .contenedor_mb{
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 5px;
+}
+
+.section-main .contenedor_mayor .contenedor_mb .contenedor_menor{
+    display: flex;
+}
+
+.section-main .contenedor_mayor .contenedor_mb{
+    width: 100%;
+}
+
+.section-main .contenedor_mayor .contenedor_ma{
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 5px;
+}
+
+#formContacto #txtCorreoCt
+{
+    width:385px;
+}
+
+#formContacto input[type=text],
+#formContacto input[type=email],
+#formContacto input[type=tel],
+#formContacto select{
+    margin:5px;
+    height:25px;
+}
+
+#formContacto #SlctTipoCt{
+    width:180px;
+}
+
+#formContacto button{
+    margin:5px;
+    background-color: #048C26;
+    border-color: #048C26;
+    color:#F0F0F0;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: thin;
+}
+
+h2{
+    color:#048C26;
+    Font-family: Bodoni MT, Bodoni 72, Didot, Didot LT STD, Hoefler Text, Garamond, Times New Roman, serif;
+    margin: 5px;
+}
+
+.contenedor_introductorio{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#pbtnEnviarCt{
+    align-items: center; 
+    text-align: center;
+}
+
+#txtMensajeCt{
+    width: 100%;
+    resize: none;
+    padding: 5px;
+}
+
+@media only screen and (max-width: 846px) {
+    .section-main .contenedor_mayor .contenedor_mb .contenedor_menor .contenedor_b,
+    .section-main .contenedor_mayor .contenedor_ma
+    {
+        display: none;
+    }
+
+    .section-main .contenedor_mayor{
+        margin-top: 0;
+    }
+
+    .section-main .contenedor_mayor .contenedor_mb{
+        width: auto;
+    }
+
+    #formContacto #txtCorreoCt
+    {
+        width:auto;
+    }
+
+    .section-main .contenedor_mayor .contenedor_mb .contenedor_menor .contenedor_a{
+        margin-top: 0;
+    }
+}
